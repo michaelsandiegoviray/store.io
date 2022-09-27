@@ -1,8 +1,21 @@
-# Install
+# Store.io
 
-`npm install`
 
----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Things to add
 
