@@ -16,6 +16,7 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 //main routes
 const itemsRoute = require('./routes/item') 
+const bodyParser = require("body-parser")
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -30,12 +31,11 @@ connectDB();
 app.set("view engine", "ejs");
 
 //Static Folder
-app.use(express.static(__dirname + '/public'));
+app.use("/public", express.static(__dirname + "/public"));
 
 //Body Parsing pull stuff out of forms
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 //Logging
 app.use(logger("dev"));
 

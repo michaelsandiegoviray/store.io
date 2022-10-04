@@ -50,19 +50,23 @@ module.exports = {
       console.log(err);
     }
   },
-  createItem: async (req, res) => {
-    try {
 
-      await Item.create({
-name: req.body.name,
-
-      });
-      console.log("Post has been added!");
-      res.redirect("/profile");
-    } catch (err) {
-      console.log(err);
-    }
-  },
+      createItem: async (req, res) => {
+        try {
+    
+          await Item.create({
+name:req.body.name,
+location:req.body.location,
+expirationDate:req.body.expirationDate,
+howMuch:req.body.howMuch,
+notes:req.body.notes,
+user: req.user.id,});
+          console.log("Post has been added!");
+          res.redirect("/profile");
+        } catch (err) {
+          console.log(err);
+        }
+      },
   likeItem: async (req, res) => {
     try {
       await Item.findOneAndUpdate(

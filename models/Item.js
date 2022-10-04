@@ -7,21 +7,21 @@ const ItemSchema = new mongoose.Schema({
   },
   location: {
     type: String,
-    required: true,
+    required: false,
   },
   expirationDate: {
     type: Date,
-    required: true,
+    required: false,
   },
   howMuch:{
     type:Number,
-    required: true,
+    required: false,
   },
 notes:{
     type:String,
-    required:true,
+    required:false,
 },
-  user: {
+user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
