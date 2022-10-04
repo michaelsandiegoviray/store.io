@@ -1,0 +1,42 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-6">
+          <div>
+              <p><strong>User Name</strong>: <%= user.userName %></p>
+              <p><strong>Email</strong>: <%= user.email %></p>
+              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+          </div>
+          <div class="mt-5">
+            <h2>Add an item</h2>
+            <form action="/items/createitem" enctype="multipart/form-data" method="POST">
+              <div class="mb-3">
+                  <label for="title" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="title" name="title">
+              </div>
+              <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location">
+            </div>
+            <div class="mb-3">
+              <label for="expirationDate" class="form-label">Expiration Date</label>
+              <input type="date" class="form-control" id="expirationDate" name="expirationDate">
+          </div>
+          <div class="mb-3">
+            <label for="howMuch" class="form-label">How Much?</label>
+            <input type="Number" class="form-control" id="howMuch" name="howMuch">
+        </div>
+              <div class="mb-3">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea class="form-control" id="notes" name="notes"></textarea>
+              </div>
+              
+          
+              
+              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+            </form>
+          </div>
+      </div>
+     </div>
+  </div>
+<%- include('partials/footer') -%>

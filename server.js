@@ -4,12 +4,18 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
+//storing session in MongoDB
 const methodOverride = require("method-override");
+//override methods 
 const flash = require("express-flash");
+//show notifications for forms 
 const logger = require("morgan");
+//logger
 const connectDB = require("./config/database");
+//database
 const mainRoutes = require("./routes/main");
-const postRoutes = require("./routes/posts");
+//main routes
+const itemsRoute = require('./routes/item') 
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -24,9 +30,9 @@ connectDB();
 app.set("view engine", "ejs");
 
 //Static Folder
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 
-//Body Parsing
+//Body Parsing pull stuff out of forms
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -36,7 +42,7 @@ app.use(logger("dev"));
 //Use forms for put / delete
 app.use(methodOverride("_method"));
 
-// Setup Sessions - stored in MongoDB
+// Setup Sessions - stored in MongoDB can log in and leave then come back later 
 app.use(
   session({
     secret: "keyboard cat",
@@ -55,7 +61,7 @@ app.use(flash());
 
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes);
-app.use("/post", postRoutes);
+app.use('/items', itemsRoute);
 
 //Server Running
 app.listen(process.env.PORT, () => {
